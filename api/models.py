@@ -132,7 +132,7 @@ class CourseDetail(models.Model):
     what_to_study_brief = models.TextField(verbose_name="我将学到哪些内容")
     career_improvement = models.TextField(verbose_name="此项目如何有助于我的职业生涯")
     prerequisite = models.TextField(verbose_name="课程先修要求", max_length=1024)
-    recommend_courses = models.ManyToManyField("Course", related_name="recommend_by", blank=True)
+    recommend_courses = models.ManyToManyField("Course", related_name="recommend_by", blank=True)  # 推荐课程
     teachers = models.ManyToManyField("Teacher", verbose_name="课程讲师")
 
     def __str__(self):

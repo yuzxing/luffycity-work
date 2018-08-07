@@ -73,19 +73,30 @@ from rest_framework.pagination import PageNumberPagination
 
 
 # d. 查看id=1的学位课对应的所有模块名称
+# class DegreeCourseView(APIView):
+# 
+#     def get(self, request, *args, **kwargs):
+#         course_list = models.Course.objects.filter(degree_course__isnull=True, id=1).first()
+#         ret = DegreeCourseSerializer(instance=course_list)
+#         return Response(ret.data)
+
+
+#  e.获取id = 1的专题课，并打印：课程名、级别(中文)、why_study、what_to_study_brief、所有recommend_courses
 class DegreeCourseView(APIView):
 
     def get(self, request, *args, **kwargs):
-        course_list = models.DegreeCourse.objects.filter(id=1).first()
+        course_list = models.Course.objects.filter(degree_course__isnull=True, id=1).first()
         ret = DegreeCourseSerializer(instance=course_list)
         return Response(ret.data)
-
-
-
-
-
-
-
+    
+    
+#  i.获取id = 1的专题课，并打印该课程相关的所有的价格策略
+# class DegreeCourseView(APIView):
+#
+#     def get(self, request, *args, **kwargs):
+#         course_list = models.DegreeCourse.objects.filter(id=1).first()
+#         ret = DegreeCourseSerializer(instance=course_list)
+#         return Response(ret.data)
 
 
 
