@@ -1,12 +1,12 @@
 from rest_framework.routers import DefaultRouter
 from django.conf.urls import url
 from django.contrib import admin
-from api.views import course
+from api.views import course2
 
 urlpatterns = [
-    url(r"^courses/$", course.CourseView.as_view()),
-    url(r"^courses/(?P<pk>\d+)/$", course.CourseDetailView.as_view()),
-    # url(r"^degree/$", course.DegreeCourseView.as_view())
+    url(r"^courses/$", course2.CourseView.as_view({'get': 'list', 'post': 'create'})),
+    url(r"^courses/(?P<pk>\d+)/$", course2.CourseView.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'})),
+
 
 ]
 # router = DefaultRouter()
